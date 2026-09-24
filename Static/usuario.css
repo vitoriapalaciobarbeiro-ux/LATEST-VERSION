@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f8f1f3;
+    color: #3f202b;
+}
+
+
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: 60px auto;
+}
+
+h2 {
+    color: #681f36;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.titulo-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.titulo-btn a {
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.adicionar {
+    background-color: #681f36;
+    color: white;
+}
+
+.adicionar:hover {
+    background-color: #852945;
+}
+
+
+.logar {
+    background-color: #ead8de;
+    color: #681f36;
+}
+
+.logar:hover {
+    background-color: #ddc3cb;
+}
+
+
+.flash-messages {
+    margin-bottom: 20px;
+}
+
+.flash {
+    padding: 13px 18px;
+    border-radius: 10px;
+    background-color: #ead8de;
+    color: #681f36;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(104, 31, 54, 0.10);
+}
+
+thead {
+    background-color: #681f36;
+    color: white;
+}
+
+th {
+    padding: 17px 20px;
+    text-align: left;
+    font-size: 15px;
+}
+
+td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee2e6;
+    color: #4c3039;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr {
+    transition: 0.2s;
+}
+
+tbody tr:hover {
+    background-color: #fcf6f8;
+}
+
+td:last-child {
+    white-space: nowrap;
+}
+
+
+.editar {
+    display: inline-block;
+    padding: 8px 13px;
+    border-radius: 8px;
+    background-color: #8b304b;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.editar:hover {
+    background-color: #70253c;
+}
+.excluir {
+    display: inline-block;
+    padding: 8px 13px;
+    border-radius: 8px;
+    background-color: #d9b7c1;
+    color: #681f36;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.excluir:hover {
+    background-color: #c99da9;
+}
+
+
+@media (max-width: 700px) {
+
+    main {
+        width: 95%;
+        margin: 30px auto;
+    }
+
+    .titulo-btn {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+
+    .titulo-btn a {
+        text-align: center;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th,
+    td {
+        padding: 12px 10px;
+    }
+
+}

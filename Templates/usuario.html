@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuários</title>
+    <link rel="stylesheet" href="/static/usuario.css">
+</head>
+<body>
+    <main>
+
+        <h2>Lista de Usuários</h2>
+
+        <div class="titulo-btn">
+            <a class="adicionar" href="{{ url_for('novo_user') }}">Adicionar usuário</a>
+            <a class="logar" href="{{ url_for('entrar_user') }}">Fazer Login</a>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {%  for category, message in messages %}
+                        <div class="flash {{ category }}">{{  message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Senha</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                    <tr>
+                        <td>{{ usuario[0] }}</td>
+                        <td>{{ usuario[1] }}</td>
+                        <td>{{ usuario[2] }}</td>
+                        <td>{{ usuario[3] }}</td>
+                        <td>
+                            <a class="editar" href="{{ url_for('editar_usuario', id=usuario[0]) }}">Editar</a>
+                            <a href="{{ url_for('deletar_usuario', id=usuario[0]) }}" class="excluir">Excluir</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

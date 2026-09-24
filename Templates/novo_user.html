@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Usuário</title>
+    <link rel="stylesheet" href="/static/novo_user.css">
+</head>
+<body>
+    <main>
+        <div class="titulo-btn">
+            <h1>Adicionar Usuário</h1>
+            <a href="{{ url_for('usuario') }}" class="cancelar">Cancelar</a>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {%  for category, message in messages %}
+                        <div class="flash {{ category }}">{{  message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form action="/cadastrar" method="POST">
+            <label for="nome">Nome do usuário:</label>
+            <input type="text" id="nome" name="nome" required placeholder="Ex.: Lais Sinatra">
+
+            <label for="email">E-mail do usuário:</label>
+            <input type="text" id="email" name="email" required placeholder="Ex.: lais.back@gamil.com">
+
+            <label for="senha">Senha do usuário:</label>
+            <input type="text" id="senha" name="senha" required placeholder="Ex.: 1234">
+
+            <button type="submit" id="botao">Salvar</button>
+        </form>
+    </main>
+</body>
+</html>

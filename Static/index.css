@@ -1,0 +1,192 @@
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f8f1f3;
+    color: #3f202b;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* NOME DA BIBLIOTECA + LOGIN */
+
+.nome-pag {
+    background-color: #681f36;
+    color: white;
+    padding: 20px 28px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 35px;
+}
+
+.nome-pag h2 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.logar {
+    text-decoration: none;
+    color: #681f36;
+    background-color: white;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.logar:hover {
+    background-color: #ead8de;
+}
+
+/* TÍTULO + BOTÃO */
+
+.titulo-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.titulo-btn h1 {
+    font-size: 30px;
+    color: #681f36;
+}
+
+.adicionar {
+    text-decoration: none;
+    background-color: #681f36;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 9px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.adicionar:hover {
+    background-color: #852945;
+}
+
+/* MENSAGENS */
+
+.flash-messages {
+    margin-bottom: 20px;
+}
+
+.flash {
+    padding: 13px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #ead8de;
+    color: #681f36;
+}
+
+/* TABELA */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(104, 31, 54, 0.10);
+}
+
+thead {
+    background-color: #681f36;
+    color: white;
+}
+
+th {
+    padding: 16px;
+    text-align: left;
+    font-size: 15px;
+}
+
+td {
+    padding: 15px 16px;
+    border-bottom: 1px solid #ead8de;
+    color: #4c3039;
+}
+
+tbody tr:hover {
+    background-color: #fbf6f8;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* BOTÕES DA TABELA */
+
+.editar,
+.excluir {
+    display: inline-block;
+    text-decoration: none;
+    padding: 8px 13px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.editar {
+    background-color: #681f36;
+    color: white;
+}
+
+.editar:hover {
+    background-color: #852945;
+}
+
+.excluir {
+    background-color: #ead8de;
+    color: #681f36;
+}
+
+.excluir:hover {
+    background-color: #dbc5cc;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 20px 12px;
+    }
+
+    .nome-pag {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .titulo-btn {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .titulo-btn h1 {
+        font-size: 25px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+```

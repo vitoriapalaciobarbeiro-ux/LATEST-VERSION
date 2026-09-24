@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Livros</title>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+    <main>
+        <div class="nome-pag">
+            <h2>Nova Biblioteca</h2>
+            <a class="logar" href="{{ url_for('entrar_user') }}">Login</a>
+        </div>
+
+        <div class="titulo-btn">
+            <h1>Lista de livros</h1>
+            <a class="adicionar" href="{{ url_for('novo') }}">Adicionar Livro</a>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {%  for category, message in messages %}
+                        <div class="flash {{ category }}">{{  message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Ano de publicação</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for livro in livros %}
+                    <tr>
+                        <td>{{ livro[0] }}</td>
+                        <td>{{ livro[1] }}</td>
+                        <td>{{ livro[2] }}</td>
+                        <td>{{ livro[3] }}</td>
+                        <td>
+                            <a class="editar" href="{{ url_for('editar', id=livro[0]) }}">Editar</a>
+                            <a href="{{ url_for('deletar', id=livro[0]) }}" class="excluir">Excluir</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
