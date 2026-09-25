@@ -47,7 +47,7 @@ def criar():
                           WHERE nome = ?""", (nome,))
        if cursor.fetchone() is not None:
            flash("Erro: Livro já cadastrado!")
-           return redirect("novo")
+           return redirect(url_for('novo'))
 
 
        cursor.execute("""INSERT INTO LIVRO (nome, AUTOR, ANO_PUBLICACAO)
@@ -159,7 +159,7 @@ def cadastrar():
                           WHERE email = ?""", (email,))
        if cursor.fetchone() is not None:
            flash("Erro: Usuário já cadastrado!")
-           return redirect("usuario")
+           return redirect(url_for('usuario'))
 
 
        cursor.execute("""INSERT INTO usuario (nome, email, senha)
@@ -254,7 +254,7 @@ def entrar():
 
        if not usuario:
            flash("Erro: Login incorreto!")
-           return redirect("login.html")
+           return redirect(url_for('entrar_user'))
 
        id_usuario, senha_hash = usuario
 
@@ -263,10 +263,10 @@ def entrar():
                session ['id_usuario'] = id_usuario
 
                flash("Login bem-sucedido!")
-               return render_template('usuario.html', usuario=usuario)
+               return render_template('usuario2.html', usuario=usuario)
            else:
                flash("Login incorreto!")
-               return redirect("login.html")
+               return redirect(url_for('entrar_user'))
 
     except Exception as e:
       flash(f"Ocorreu um erro! -> {e}")
@@ -281,6 +281,10 @@ def logout():
     session.pop('id_usuario', None)
     flash("Logout com sucesso!")
     return redirect(url_for('usuario'))
+    
+@app.route('/usuario2')
+def usuario2():
+    return render_template('usuario2.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
