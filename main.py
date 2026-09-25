@@ -96,7 +96,7 @@ def editar(id):
                            (nome, autor, ano_publicacao, id))
 
 
-            id_livro = cursor.fetchone()[0]
+            id_livro = id
             con.commit()
 
 
