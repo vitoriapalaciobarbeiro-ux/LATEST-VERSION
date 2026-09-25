@@ -6,7 +6,7 @@
    <link rel="stylesheet" href="/static/editar_user.css">
 </head>
 <body>
-   <form action="/editar_user" method="post">
+   <form action="{{ url_for('editar_usuario', id=usuario[0]) }}" method="post">
        <label>Digite seu nome: </label>
        <input type='text' name="nome" id="nome">
        <label>Digite seu email: </label>
