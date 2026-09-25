@@ -90,8 +90,10 @@ def editar(id):
             arquivo = request.files['imagem']
 
 
-            cursor.execute("""INSERT INTO LIVRO (nome, AUTOR, ANO_PUBLICACAO)
-                                  values(?, ?, ?) RETURNING ID_LIVRO """, (nome, autor, ano_publicacao))
+            cursor.execute(""" UPDATE LIVRO
+                               SET nome = ?, autor = ?, ano_publicacao = ?
+                               WHERE id_livro = ? """,
+                           (nome, autor, ano_publicacao, id))
 
 
             id_livro = cursor.fetchone()[0]
@@ -181,10 +183,10 @@ def editar_usuario(id):
     cursor = con.cursor()
     try:
         cursor.execute(""" SELECT id_usuario, nome, email, senha
-                           from usuario
-                           where id_usuario = ? """, (id,))
+                           FROM usuario
+                           WHERE id_usuario = ? """, (id,))
         usuario = cursor.fetchone()
-        print(usuario)
+
         if usuario is None:
             flash("Usuário NÃO encontrado")
             return redirect(url_for('usuario'))
@@ -194,23 +196,22 @@ def editar_usuario(id):
             email = request.form['email']
             senha = request.form['senha']
 
+            senha_hash = bcrypt.generate_password_hash(senha).decode('utf-8')
 
-
-            cursor.execute(""" UPDATE usuario 
+            cursor.execute(""" UPDATE usuario
                                SET nome = ?, email = ?, senha = ?
-                               where id_usuario = ?""", (nome, email, senha, id))
+                               WHERE id_usuario = ? """,
+                           (nome, email, senha_hash, id))
 
             con.commit()
             flash("Usuário editado com sucesso!")
             return redirect(url_for('usuario'))
 
-        print(usuario)
-
-        print(usuario[3])
         return render_template('editar_user.html', usuario=usuario)
 
     except Exception as e:
         flash(f"Ocorreu um erro! -> {e}")
+        con.rollback()
         return redirect(url_for('usuario'))
 
     finally:
@@ -283,7 +284,11 @@ def logout():
     
 @app.route('/usuario2')
 def usuario2():
-    return render_template('usuario2.html')
+    if 'id_usuario' not in session:
+        flash('Precisa estar logado.')
+        return redirect(url_for('entrar_user'))
+    else:
+        return render_template('usuario2.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
