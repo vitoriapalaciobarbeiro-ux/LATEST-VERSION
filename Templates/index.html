@@ -44,10 +44,6 @@
                         <td>{{ livro[1] }}</td>
                         <td>{{ livro[2] }}</td>
                         <td>{{ livro[3] }}</td>
-                        <td>
-                            <a class="editar" href="{{ url_for('editar', id=livro[0]) }}">Editar</a>
-                            <a href="{{ url_for('deletar', id=livro[0]) }}" class="excluir">Excluir</a>
-                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
