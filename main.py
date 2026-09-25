@@ -26,7 +26,7 @@ def index():
 def novo():
     if 'id_usuario' not in session:
         flash('Precisa estar loggado.')
-        return redirect(url_for('login.html'))
+        return redirect(url_for('entrar_user'))
     else:
         return render_template('novo.html')
 
@@ -254,7 +254,7 @@ def entrar():
 
        if not usuario:
            flash("Erro: Login incorreto!")
-           return redirect("usuario2")
+           return redirect("login.html")
 
        id_usuario, senha_hash = usuario
 
@@ -266,7 +266,7 @@ def entrar():
                return render_template('usuario.html', usuario=usuario)
            else:
                flash("Login incorreto!")
-               return redirect("usuario2")
+               return redirect("login.html")
 
     except Exception as e:
       flash(f"Ocorreu um erro! -> {e}")
