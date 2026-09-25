@@ -274,7 +274,6 @@ def entrar():
 
     finally:
         cursor.close()
-    return redirect(url_for('usuario'))
 
 @app.route('/logout')
 def logout():
